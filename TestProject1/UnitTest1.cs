@@ -6,7 +6,7 @@ namespace TestProject1
     public class UnitTest1
     {
         [TestMethod]
-        public void CheckVIN_OnlyFromNumbers()//только цифры
+        public void CheckVIN_OnlyFromNumbers()//vin состоит только цифр
         {
             string vin = "11111111111111111";
             Class1 class1 = new Class1();
@@ -15,7 +15,16 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void CheckVIN_OnlyFromLetters()//только буквы
+        public void CheckVIN_VinWithSpecialSymbol()//vin содержит специальные знаки
+        {
+            string vin = "A/1111111111*1111";
+            Class1 class1 = new Class1();
+            bool actual = class1.CheckVIN(vin);
+            Assert.IsFalse(actual);
+        }
+
+        [TestMethod]
+        public void CheckVIN_OnlyFromLetters()//vin состоит только букв
         {
             string vin = "AAAAAAAAAAAAAAAAA";
             Class1 class1 = new Class1();
@@ -24,7 +33,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void CheckVIN_ForbiddenLetters()//запрещенный символ
+        public void CheckVIN_ForbiddenLetters()//vin содержит запрещенный символ Q
         {
             string vin = "AQAAAAAAAAAAAAAAA";
             Class1 class1 = new Class1();
@@ -51,7 +60,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void CheckVIN_RussianLetters()//использование русских букв вместо английских
+        public void CheckVIN_RussianLetters()//vin содержит русские буквы
         {
             string vin = "ПРИВЕТПРИВЕТПРИВЕ";
             Class1 class1 = new Class1();
@@ -60,7 +69,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void GetVINCountry_VinFromAfrica()//vin начинающийся на букву
+        public void GetVINCountry_VinFromAfrica()//vin начинается на букву
         {
             string vin = "A1111111111111111";
             string execept = "Африка";
@@ -70,7 +79,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void GetVINCountry_WrongVin()//неверный vin
+        public void GetVINCountry_WrongVin()//неверный vin в методе GetVINCountry
         {
             string vin = "аррараладад";
             string execept = "Такого vin не существует";
@@ -80,7 +89,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void GetVINCountry_VinFromOkeania()//vin начинающийся на цифру
+        public void GetVINCountry_VinFromOkeania()//vin начинается на цифру
         {
             string vin = "61111111111111111";
             string execept = "Океания";
@@ -90,7 +99,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void GetVINCountry_DoesNotReturnNullWithCorrectData()//не возвращает null с правильными данными
+        public void GetVINCountry_DoesNotReturnNullWithCorrectData()//метод GetVINCountry не возвращает null с правильными данными
         {
             string vin = "61111111111111111";
             Class1 class1 = new Class1();
@@ -99,7 +108,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void CheckVIN_DoesNotReturnNullWithCorrectData()//не возвращает null с правильными данными
+        public void CheckVIN_DoesNotReturnNullWithCorrectData()//метод CheckVIN не возвращает null с правильными данными
         {
             string vin = "11111111111111111";
             Class1 class1 = new Class1();
@@ -108,7 +117,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void GetVINCountry_DoesNotReturnNullWithWrongData()//не возвращает null с неверными данными
+        public void GetVINCountry_DoesNotReturnNullWithWrongData()//метод GetVINCountry не возвращает null с неверными данными
         {
             string vin = "Q1111111111111111";
             Class1 class1 = new Class1();
@@ -117,7 +126,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void CheckVIN_DoesNotReturnNullWithWrongData()//не возвращает null с неверными данными
+        public void CheckVIN_DoesNotReturnNullWithWrongData()//метод CheckVIN не возвращает null с неверными данными
         {
             string vin = "11111111111";
             Class1 class1 = new Class1();
@@ -135,14 +144,13 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void GetVINCountry_ReturnString()//метод GetVINCountry возвращает bool
+        public void GetVINCountry_ReturnString()//метод GetVINCountry возвращает string
         {
             string vin = "61111111111111111";
             Class1 class1 = new Class1();
             string actual = class1.GetVINCountry(vin);
             Assert.IsInstanceOfType(actual, typeof(string));
         }
-
     }
 
 }
