@@ -90,12 +90,57 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void GetVINCountry_()//vin начинающийся на цифру
+        public void GetVINCountry_DoesNotReturnNullWithCorrectData()//не возвращает null с правильными данными
         {
-            string vin = "611111L1111111111";
+            string vin = "61111111111111111";
             Class1 class1 = new Class1();
             string actual = class1.GetVINCountry(vin);
             Assert.IsNotNull(actual);
+        }
+
+        [TestMethod]
+        public void CheckVIN_DoesNotReturnNullWithCorrectData()//не возвращает null с правильными данными
+        {
+            string vin = "11111111111111111";
+            Class1 class1 = new Class1();
+            bool actual = class1.CheckVIN(vin);
+            Assert.IsNotNull(actual);
+        }
+
+        [TestMethod]
+        public void GetVINCountry_DoesNotReturnNullWithWrongData()//не возвращает null с неверными данными
+        {
+            string vin = "Q1111111111111111";
+            Class1 class1 = new Class1();
+            string actual = class1.GetVINCountry(vin);
+            Assert.IsNotNull(actual);
+        }
+
+        [TestMethod]
+        public void CheckVIN_DoesNotReturnNullWithWrongData()//не возвращает null с неверными данными
+        {
+            string vin = "11111111111";
+            Class1 class1 = new Class1();
+            bool actual = class1.CheckVIN(vin);
+            Assert.IsNotNull(actual);
+        }
+
+        [TestMethod]
+        public void CheckVIN_ReturnBool()//метод CheckVIN возвращает bool
+        {
+            string vin = "11111111111111111";
+            Class1 class1 = new Class1();
+            bool actual = class1.CheckVIN(vin);
+            Assert.IsInstanceOfType(actual, typeof(bool));
+        }
+
+        [TestMethod]
+        public void GetVINCountry_ReturnString()//метод GetVINCountry возвращает bool
+        {
+            string vin = "61111111111111111";
+            Class1 class1 = new Class1();
+            string actual = class1.GetVINCountry(vin);
+            Assert.IsInstanceOfType(actual, typeof(string));
         }
     }
 }

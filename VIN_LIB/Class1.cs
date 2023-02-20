@@ -63,7 +63,7 @@ namespace VIN_LIB
             }
             else
             {
-                return "Такого вина не существует";
+                return "Такого vin не существует";
             }
         }
     }
