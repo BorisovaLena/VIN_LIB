@@ -142,6 +142,7 @@ namespace TestProject1
             string actual = class1.GetVINCountry(vin);
             Assert.IsInstanceOfType(actual, typeof(string));
         }
+
     }
 
 }
